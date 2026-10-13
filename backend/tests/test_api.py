@@ -2,11 +2,14 @@ import pytest
 from httpx import AsyncClient, ASGITransport
 from app.main import app
 from app.core.init_db import init_db
-from app.core.database import async_session_factory
+from app.models.base import Base
+from app.core.database import async_session_factory, engine
 
 
 @pytest.fixture(autouse=True)
 async def ensure_db():
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
     async with async_session_factory() as session:
         await init_db(session)
 

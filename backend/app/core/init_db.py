@@ -232,6 +232,9 @@ async def init_db_seeds(session: AsyncSession) -> None:
     await session.commit()
 
 
+init_db = init_db_seeds
+
+
 if __name__ == "__main__":
     import asyncio
     from app.core.database import AsyncSessionLocal, engine

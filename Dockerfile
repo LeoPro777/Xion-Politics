@@ -9,6 +9,7 @@ COPY frontend/package*.json ./
 RUN npm ci
 
 COPY frontend/ ./
+RUN chmod -R +x node_modules/.bin
 ARG VITE_API_URL=/api/v1
 ENV VITE_API_URL=$VITE_API_URL
 RUN npm run build

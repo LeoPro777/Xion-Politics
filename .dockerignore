@@ -1,0 +1,17 @@
+node_modules
+**/node_modules
+frontend/node_modules
+dist
+**/dist
+frontend/dist
+__pycache__
+**/__pycache__
+*.py[cod]
+.venv
+venv
+env
+.pytest_cache
+.git
+.github
+.env
+.env.*

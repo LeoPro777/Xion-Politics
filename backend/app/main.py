@@ -134,6 +134,22 @@ async def generic_exception_handler(request: Request, exc: Exception):
     )
 
 
+@app.get("/", tags=["Root"])
+async def root():
+    return {
+        "message": f"{settings.PROJECT_NAME} API en línea",
+        "status": "online",
+        "docs": f"{settings.API_V1_STR}/docs",
+        "health": "/health",
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+
+
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon():
+    return JSONResponse(status_code=status.HTTP_204_NO_CONTENT, content=None)
+
+
 @app.get("/health", tags=["Salud"])
 async def health_check():
     return {

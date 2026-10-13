@@ -1,3 +1,4 @@
+import asyncio
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 from fastapi import FastAPI, Request, status
@@ -30,11 +31,23 @@ logger = structlog.get_logger()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Inicialización de esquema y seeds en arranque
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
-    async with AsyncSessionLocal() as session:
-        await init_db_seeds(session)
+    # Inicialización de esquema y seeds en arranque con reintentos
+    max_retries = 5
+    for attempt in range(1, max_retries + 1):
+        try:
+            logger.info("db_init_attempt", host=engine.url.host, attempt=attempt)
+            async with engine.begin() as conn:
+                await conn.run_sync(Base.metadata.create_all)
+            async with AsyncSessionLocal() as session:
+                await init_db_seeds(session)
+            logger.info("db_init_success", host=engine.url.host)
+            break
+        except Exception as e:
+            if attempt == max_retries:
+                logger.error("db_connection_failed", host=engine.url.host, error=str(e))
+                raise
+            logger.warning("db_connection_retry", attempt=attempt, host=engine.url.host, error=str(e))
+            await asyncio.sleep(2 * attempt)
     yield
     await engine.dispose()
 

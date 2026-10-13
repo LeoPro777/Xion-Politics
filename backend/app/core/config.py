@@ -20,7 +20,8 @@ class Settings(BaseSettings):
     GOOGLE_CLIENT_ID: str = "123456789-xxxxxxx.apps.googleusercontent.com"
     GOOGLE_CLIENT_SECRET: str = "GOCSPX-xxxxxxxxxxxxxxxx"
     
-    # Database: Default a SQLite asíncrono para dev local sin docker, sobreescribible con DATABASE_URL
+    # Database: Modo SQLite temporal para pruebas y despliegues sin PostgreSQL
+    USE_SQLITE: bool = True
     DATABASE_URL: str = os.getenv(
         "DATABASE_URL", "sqlite+aiosqlite:///./sigo_zulia.db"
     )
@@ -28,6 +29,11 @@ class Settings(BaseSettings):
     @field_validator("DATABASE_URL", mode="before")
     @classmethod
     def assemble_database_url(cls, v: str) -> str:
+        # Forzar SQLite si USE_SQLITE está activo o si el host apunta al contenedor local 'db' de docker-compose
+        use_sqlite_env = os.getenv("USE_SQLITE", "true").lower() in ("true", "1", "yes")
+        if use_sqlite_env or (isinstance(v, str) and "@db:" in v):
+            return "sqlite+aiosqlite:///./sigo_zulia.db"
+
         if isinstance(v, str):
             if v.startswith("postgres://"):
                 return v.replace("postgres://", "postgresql+asyncpg://", 1)

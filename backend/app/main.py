@@ -1,10 +1,12 @@
 import asyncio
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
+import os
 from fastapi import FastAPI, Request, status
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 from starlette.exceptions import HTTPException as StarletteHTTPException
 import structlog
 
@@ -134,8 +136,17 @@ async def generic_exception_handler(request: Request, exc: Exception):
     )
 
 
+STATIC_DIR = os.getenv(
+    "STATIC_DIR",
+    os.path.abspath(os.path.join(os.path.dirname(os.path.dirname(__file__)), "static")),
+)
+
+
 @app.api_route("/", methods=["GET", "HEAD"], tags=["Root"])
 async def root():
+    index_file = os.path.join(STATIC_DIR, "index.html")
+    if os.path.isfile(index_file):
+        return FileResponse(index_file)
     return {
         "message": f"{settings.PROJECT_NAME} API en línea",
         "status": "online",
@@ -161,3 +172,27 @@ async def health_check():
 
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
+
+# Servir Frontend SPA si el directorio estático existe
+if os.path.isdir(STATIC_DIR):
+    assets_dir = os.path.join(STATIC_DIR, "assets")
+    if os.path.isdir(assets_dir):
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+
+    @app.get("/{full_path:path}", include_in_schema=False)
+    async def serve_spa(full_path: str):
+        if full_path.startswith("api/") or full_path == "api":
+            return JSONResponse(
+                status_code=status.HTTP_404_NOT_FOUND,
+                content={"error_code": "RESOURCE_NOT_FOUND", "detail": "Ruta de API no encontrada"},
+            )
+        file_path = os.path.join(STATIC_DIR, full_path)
+        if full_path and os.path.isfile(file_path):
+            return FileResponse(file_path)
+        index_file = os.path.join(STATIC_DIR, "index.html")
+        if os.path.isfile(index_file):
+            return FileResponse(index_file)
+        return JSONResponse(
+            status_code=status.HTTP_404_NOT_FOUND,
+            content={"error_code": "RESOURCE_NOT_FOUND", "detail": "Recurso no encontrado"},
+        )

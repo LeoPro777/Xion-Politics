@@ -1,0 +1,52 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: sigo_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-sigo_admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sigo_secure_pass_2026}
+      POSTGRES_DB: ${POSTGRES_DB:-sigo_zulia_db}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sigo_admin} -d ${POSTGRES_DB:-sigo_zulia_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: sigo_api
+    restart: always
+    environment:
+      - DATABASE_URL=${DATABASE_URL:-postgresql+asyncpg://sigo_admin:sigo_secure_pass_2026@db:5432/sigo_zulia_db}
+      - SECRET_KEY=${SECRET_KEY:-super-secret-jwt-key-replace-in-prod}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID:-123456789-xxxxxxx.apps.googleusercontent.com}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET:-GOCSPX-xxxxxxxxxxxxxxxx}
+      - CORS_ORIGINS=${CORS_ORIGINS:-["http://localhost:5173","http://localhost"]}
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: sigo_spa
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

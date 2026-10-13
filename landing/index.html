@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primero Justicia Zulia | Juventud con Futuro</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pjYellow: '#FFD200',
+                        pjYellowHover: '#E5BD00',
+                        pjBlack: '#121212',
+                        pjDarkNavy: '#0F172A',
+                        pjBlue: '#1E3A8A',
+                        pjLightGray: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar and subtle transitions */
+        ::-webkit-scrollbar {
+            width: 9px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111827;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FFD200;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e5bd00;
+        }
+        .hero-pattern {
+            background-color: #0b1120;
+            background-image: radial-gradient(rgba(255, 210, 0, 0.12) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-pjYellow selection:text-black">
+
+    <!-- Top Alert / Announcement Bar -->
+    <div class="bg-pjDarkNavy border-b border-yellow-500/20 text-xs py-2 px-4 text-center text-slate-300">
+        <span class="inline-flex items-center gap-2 flex-wrap justify-center">
+            <span class="w-2 h-2 rounded-full bg-pjYellow animate-ping"></span>
+            <strong class="text-pjYellow font-semibold">Zulia Activo:</strong> ¡Inscríbete en el Programa de Formación Política Juvenil 2026! 
+            <a href="#formacion" class="underline hover:text-white font-medium ml-1">Más información</a>
+            <a href="http://localhost:5173/login?bypass=admin" target="_blank" class="bg-pjYellow hover:bg-yellow-400 text-black font-extrabold px-2.5 py-0.5 rounded-full text-[11px] inline-flex items-center gap-1 shadow-sm transition ml-2">
+                <i class="fa-solid fa-bolt text-[10px]"></i> Acceso Directivos (Bypass)
+            </a>
+        </span>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#inicio" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-xl bg-pjYellow flex items-center justify-center font-black text-xl text-pjBlack shadow-md shadow-pjYellow/30 group-hover:scale-105 transition-transform duration-200 border-2 border-pjBlack">
+                    PJ
+                </div>
+                <div>
+                    <div class="flex items-center gap-1.5 leading-none">
+                        <span class="font-black text-lg tracking-tight text-pjBlack uppercase">Primero Justicia</span>
+                        <span class="text-xs bg-pjYellow text-pjBlack font-black px-1.5 py-0.5 rounded shadow-sm">ZULIA</span>
+                    </div>
+                    <span class="text-xs font-bold text-pjBlue tracking-wider uppercase">Secretaría Juvenil Regional</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Menu -->
+            <div class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-700">
+                <a href="#inicio" class="hover:text-pjYellow text-pjDarkNavy transition-colors">Inicio</a>
+                <a href="#nosotros" class="hover:text-pjYellow transition-colors">Estructura Juvenil</a>
+                <a href="#propuestas" class="hover:text-pjYellow transition-colors">Propuestas Zulia</a>
+                <a href="#municipios" class="hover:text-pjYellow transition-colors">Municipios</a>
+                <a href="#noticias" class="hover:text-pjYellow transition-colors">Noticias</a>
+                <a href="#formacion" class="hover:text-pjYellow transition-colors">Formación</a>
+                <a href="http://localhost:5173/login" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-pjYellow border border-yellow-500/40 px-3.5 py-2 rounded-full font-bold shadow transition flex items-center gap-1.5 text-xs">
+                    <i class="fa-solid fa-gauge-high text-xs"></i>
+                    <span>Portal SIGO</span>
+                </a>
+                <a href="#sumate" class="bg-pjYellow hover:bg-pjYellowHover text-pjBlack px-4 py-2 rounded-full font-bold shadow-md hover:shadow-lg transition-all transform active:scale-95 flex items-center gap-1.5 border border-black/10 text-xs">
+                    <i class="fa-solid fa-hand-fist text-xs"></i>
+                    <span>¡Súmate!</span>
+                </a>
+            </div>
+
+            <!-- Mobile menu trigger -->
+            <button id="mobileMenuBtn" aria-label="Abrir Menú" class="lg:hidden text-slate-800 p-2 text-2xl focus:outline-none focus:ring-2 focus:ring-pjYellow rounded-lg">
+                <i class="fa-solid fa-bars" id="menuIcon"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Drawer -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-5 shadow-xl space-y-4">
+            <a href="#inicio" class="block font-semibold text-slate-800 hover:text-pjBlue py-1 mobile-link">Inicio</a>
+            <a href="#nosotros" class="block font-semibold text-slate-800 hover:text-pjBlue py-1 mobile-link">Estructura Juvenil</a>
+            <a href="#propuestas" class="block font-semibold text-slate-800 hover:text-pjBlue py-1 mobile-link">Propuestas Zulia</a>
+            <a href="#municipios" class="block font-semibold text-slate-800 hover:text-pjBlue py-1 mobile-link">Municipios</a>
+            <a href="#noticias" class="block font-semibold text-slate-800 hover:text-pjBlue py-1 mobile-link">Noticias</a>
+            <a href="#formacion" class="block font-semibold text-slate-800 hover:text-pjBlue py-1 mobile-link">Formación</a>
+            <div class="pt-2 space-y-2">
+                <a href="http://localhost:5173/login?bypass=admin" target="_blank" class="block w-full text-center bg-slate-900 text-pjYellow border border-yellow-500/40 font-bold py-2.5 rounded-xl shadow mobile-link text-xs">
+                    <i class="fa-solid fa-bolt mr-1"></i> Portal SIGO (Acceso Directivos)
+                </a>
+                <a href="#sumate" class="block w-full text-center bg-pjYellow text-pjBlack font-bold py-3 rounded-xl shadow mobile-link">
+                    ¡Súmate como Voluntario!
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative hero-pattern text-white overflow-hidden py-20 lg:py-28 border-b-4 border-pjYellow">
+        <div class="absolute inset-0 bg-gradient-to-r from-pjDarkNavy via-slate-900/95 to-pjDarkNavy/80"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <!-- Text / Call to Action -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/30 px-3.5 py-1.5 rounded-full text-pjYellow text-xs font-bold tracking-wide uppercase">
+                        <i class="fa-solid fa-sun"></i> Juventud Primero Justicia · Estado Zulia
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        La fuerza joven que <br class="hidden sm:inline">
+                        <span class="text-pjYellow underline decoration-4 underline-offset-8">transformará el Zulia</span>
+                    </h1>
+                    <p class="text-lg text-slate-300 max-w-2xl leading-relaxed mx-auto lg:mx-0">
+                        Construimos un estado de oportunidades, libertad, justicia social y progreso. Desde Maracaibo hasta el Sur del Lago, la juventud zuliana lidera el presente para conquistar nuestro futuro.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#sumate" class="w-full sm:w-auto bg-pjYellow hover:bg-pjYellowHover text-pjBlack font-extrabold px-8 py-4 rounded-xl shadow-lg shadow-pjYellow/20 hover:shadow-pjYellow/40 transition-all text-center flex items-center justify-center gap-3">
+                            <span>Súmate a la Juventud</span>
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                        <a href="#propuestas" class="w-full sm:w-auto bg-slate-800/80 hover:bg-slate-700 text-white font-semibold px-7 py-4 rounded-xl border border-slate-700 transition text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-book-open text-pjYellow"></i>
+                            <span>Plan Zulia Joven</span>
+                        </a>
+                    </div>
+                    <!-- Rapid stats banner -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-slate-800/80 text-left">
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-black text-pjYellow">21</p>
+                            <p class="text-xs text-slate-400 font-medium">Municipios Activados</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-black text-white">+1,500</p>
+                            <p class="text-xs text-slate-400 font-medium">Jóvenes Registrados</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-black text-pjYellow">100%</p>
+                            <p class="text-xs text-slate-400 font-medium">Compromiso Zuliano</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Interactive Visual Card -->
+                <div class="lg:col-span-5">
+                    <div class="bg-gradient-to-b from-slate-800 to-slate-900 border-2 border-yellow-400/40 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+                        <div class="absolute -top-3 -right-3 bg-pjYellow text-pjBlack font-black text-xs px-3 py-1 rounded-full uppercase tracking-wider shadow">
+                            Región Zulia
+                        </div>
+                        <div class="flex items-center gap-4 border-b border-slate-700 pb-5">
+                            <div class="w-14 h-14 rounded-2xl bg-pjYellow/10 border border-pjYellow text-pjYellow flex items-center justify-center text-2xl font-bold">
+                                <i class="fa-solid fa-bridge-water"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-white text-lg">Coordinación Regional Juvenil</h3>
+                                <p class="text-xs text-slate-400">Maracaibo, San Francisco, Costa Oriental, Perijá y Sur del Lago</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 space-y-4">
+                            <div class="flex items-start gap-3 bg-slate-800/60 p-3.5 rounded-xl border border-slate-700/60">
+                                <i class="fa-solid fa-graduation-cap text-pjYellow mt-1"></i>
+                                <div>
+                                    <h4 class="text-sm font-bold text-white">Centro de Liderazgo y Políticas Públicas</h4>
+                                    <p class="text-xs text-slate-300">Talleres semanales sobre democracia, oratoria, gestión local y activismo.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 bg-slate-800/60 p-3.5 rounded-xl border border-slate-700/60">
+                                <i class="fa-solid fa-handshake-angle text-pjYellow mt-1"></i>
+                                <div>
+                                    <h4 class="text-sm font-bold text-white">Voluntariado Social "Zulia Solidario"</h4>
+                                    <p class="text-xs text-slate-300">Jornadas médicas, recuperación de espacios públicos y apoyo comunitario.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 bg-slate-800/60 p-3.5 rounded-xl border border-slate-700/60">
+                                <i class="fa-solid fa-users-gear text-pjYellow mt-1"></i>
+                                <div>
+                                    <h4 class="text-sm font-bold text-white">Red de Secretarías Universitarias</h4>
+                                    <p class="text-xs text-slate-300">Presencia en LUZ, URBE, URU, UNICA y tecnológicos del Zulia.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-5 border-t border-slate-700 text-center">
+                            <a href="#sumate" class="text-pjYellow hover:text-white font-bold text-sm inline-flex items-center gap-2 group">
+                                <span>Ver cómo integrarte a los comités juveniles</span>
+                                <i class="fa-solid fa-chevron-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estructura y Liderazgo Regional -->
+    <section id="nosotros" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
+                <span class="text-xs uppercase tracking-widest text-pjBlue font-extrabold bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+                    Estructura Orgánica
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-black text-pjDarkNavy">Coordinación Juvenil Regional Zulia</h2>
+                <p class="text-slate-600 text-base leading-relaxed">
+                    Un equipo multidisciplinario de jóvenes profesionales y líderes estudiantiles comprometidos con la defensa de los derechos, la participación cívica y la renovación de la política en nuestro estado.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Tarjeta: Coordinación General -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center hover:shadow-xl hover:border-pjYellow transition-all duration-300 group">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-slate-200 border-4 border-pjYellow overflow-hidden flex items-center justify-center text-slate-400 mb-4 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-user-tie text-3xl text-pjDarkNavy"></i>
+                    </div>
+                    <span class="text-xs font-bold text-pjBlue uppercase tracking-wider block mb-1">Coordinación Principal</span>
+                    <h3 class="text-lg font-bold text-slate-900">Coordinador Juvenil Regional</h3>
+                    <p class="text-xs text-slate-500 mt-2">Vocería política, vinculación institucional con la dirección regional de Primero Justicia Zulia.</p>
+                    <div class="mt-4 pt-4 border-t border-slate-200 flex justify-center gap-3 text-slate-400">
+                        <span class="text-xs text-pjYellow font-bold"><i class="fa-solid fa-check-circle"></i> Junta Regional</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta: Coordinación Adjunta (User Position) -->
+                <div class="bg-gradient-to-b from-yellow-50/50 to-white border-2 border-pjYellow rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-300 relative">
+                    <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-pjYellow text-pjBlack font-black text-[10px] px-3 py-0.5 rounded-full uppercase">
+                        Gestión Operativa
+                    </span>
+                    <div class="w-20 h-20 mx-auto rounded-full bg-pjYellow/20 border-4 border-pjYellow overflow-hidden flex items-center justify-center text-pjDarkNavy mb-4">
+                        <i class="fa-solid fa-user-gear text-3xl text-pjDarkNavy"></i>
+                    </div>
+                    <span class="text-xs font-bold text-pjBlue uppercase tracking-wider block mb-1">Dirección Ejecutiva</span>
+                    <h3 class="text-lg font-bold text-slate-900">Coord. Juvenil Regional Adjunto</h3>
+                    <p class="text-xs text-slate-600 mt-2">Articulación con los 21 municipios, despliegue logístico, formación de cuadros y voluntariado.</p>
+                    <div class="mt-4 pt-4 border-t border-slate-200 flex justify-center gap-3 text-slate-600 text-xs font-semibold">
+                        <span class="text-amber-700"><i class="fa-solid fa-shield-halved"></i> Coordinación Activa</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta: Secretaría de Organización Juvenil -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center hover:shadow-xl hover:border-pjYellow transition-all duration-300 group">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-slate-200 border-4 border-pjYellow overflow-hidden flex items-center justify-center text-slate-400 mb-4 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-network-wired text-3xl text-pjDarkNavy"></i>
+                    </div>
+                    <span class="text-xs font-bold text-pjBlue uppercase tracking-wider block mb-1">Estructura Base</span>
+                    <h3 class="text-lg font-bold text-slate-900">Organización y Parroquias</h3>
+                    <p class="text-xs text-slate-500 mt-2">Padrón de líderes, organización de comandos parroquiales y supervisión electoral.</p>
+                    <div class="mt-4 pt-4 border-t border-slate-200 flex justify-center gap-3 text-slate-400">
+                        <span class="text-xs text-pjYellow font-bold"><i class="fa-solid fa-check-circle"></i> Territorial</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta: Juventud Universitaria y Formación -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center hover:shadow-xl hover:border-pjYellow transition-all duration-300 group">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-slate-200 border-4 border-pjYellow overflow-hidden flex items-center justify-center text-slate-400 mb-4 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-landmark text-3xl text-pjDarkNavy"></i>
+                    </div>
+                    <span class="text-xs font-bold text-pjBlue uppercase tracking-wider block mb-1">Academia & Activismo</span>
+                    <h3 class="text-lg font-bold text-slate-900">Universidades & Formación</h3>
+                    <p class="text-xs text-slate-500 mt-2">Representación estudiantil, foros democráticos, debate legislativo y doctrina humanista.</p>
+                    <div class="mt-4 pt-4 border-t border-slate-200 flex justify-center gap-3 text-slate-400">
+                        <span class="text-xs text-pjYellow font-bold"><i class="fa-solid fa-check-circle"></i> Formación</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillars of Justice banner -->
+            <div class="mt-14 bg-pjDarkNavy text-white rounded-3xl p-8 lg:p-10 shadow-xl">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="border-l-4 border-pjYellow pl-4">
+                        <h4 class="font-bold text-lg text-pjYellow">Centro Humanista</h4>
+                        <p class="text-sm text-slate-300 mt-1">La persona en el centro de todas las políticas públicas, con justicia social y libertad económica.</p>
+                    </div>
+                    <div class="border-l-4 border-pjYellow pl-4">
+                        <h4 class="font-bold text-lg text-pjYellow">Descentralización Real</h4>
+                        <p class="text-sm text-slate-300 mt-1">Defendemos la autonomía del Zulia, sus municipios y recursos para el beneficio de sus comunidades.</p>
+                    </div>
+                    <div class="border-l-4 border-pjYellow pl-4">
+                        <h4 class="font-bold text-lg text-pjYellow">Oportunidad Juvenil</h4>
+                        <p class="text-sm text-slate-300 mt-1">Frenar la migración forzada brindando empleo digno, educación de vanguardia y tecnología a los jóvenes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Propuestas para el Zulia -->
+    <section id="propuestas" class="py-20 bg-slate-100 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
+                <span class="text-xs uppercase tracking-widest text-amber-700 font-extrabold bg-amber-100 px-3 py-1 rounded-full">
+                    Agenda Pública 2026+
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-black text-pjDarkNavy">Propuestas de la Juventud para el Zulia</h2>
+                <p class="text-slate-600 text-base">
+                    No solo denunciamos los problemas; construimos soluciones técnicas y viables para la recuperación integral de nuestro estado petrolero, agropecuario y universitario.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Proposal 1 -->
+                <div class="bg-white rounded-2xl p-7 shadow-sm hover:shadow-md border border-slate-200 transition-all">
+                    <div class="w-12 h-12 bg-pjYellow/20 text-pjBlack rounded-xl flex items-center justify-center text-xl font-bold mb-5">
+                        <i class="fa-solid fa-bolt-lightning text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Energía Eléctrica y Servicios Dignos</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Descentralización del Sistema Eléctrico Regional, inversión público-privada en el parque eólico de La Guajira y recuperación de Termozulia para poner fin a los apagones que paralizan las aulas y empresas zulianas.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+                        <li><i class="fa-solid fa-check text-pjYellow mr-2"></i>Auditoría ciudadana del servicio</li>
+                        <li><i class="fa-solid fa-check text-pjYellow mr-2"></i>Incentivos solares para universidades</li>
+                    </ul>
+                </div>
+
+                <!-- Proposal 2 -->
+                <div class="bg-white rounded-2xl p-7 shadow-sm hover:shadow-md border border-slate-200 transition-all">
+                    <div class="w-12 h-12 bg-blue-100 text-pjBlue rounded-xl flex items-center justify-center text-xl font-bold mb-5">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Zulia Hub Tecnológico & Empleo</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Creación de distritos de innovación en Maracaibo y Cabimas, con exención de impuestos municipales a startups tecnológicas lideradas por menores de 35 años y acceso a microcréditos productivos.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+                        <li><i class="fa-solid fa-check text-pjYellow mr-2"></i>Capacitación masiva en Inteligencia Artificial</li>
+                        <li><i class="fa-solid fa-check text-pjYellow mr-2"></i>Conectividad de fibra óptica en escuelas</li>
+                    </ul>
+                </div>
+
+                <!-- Proposal 3 -->
+                <div class="bg-white rounded-2xl p-7 shadow-sm hover:shadow-md border border-slate-200 transition-all">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-xl font-bold mb-5">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Rescate del Lago de Maracaibo</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Plan de acción ambiental liderado por biólogos e ingenieros jóvenes para saneamiento de costas, reactivación de plantas de tratamiento de aguas servidas y freno a derrames de crudo en la Costa Oriental.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+                        <li><i class="fa-solid fa-check text-pjYellow mr-2"></i>Monitoreo satelital de verdín y petróleo</li>
+                        <li><i class="fa-solid fa-check text-pjYellow mr-2"></i>Brigadas ecologistas en 8 municipios costeros</li>
+                    </ul>
+                </div>
+
+                <!-- Proposal 4 -->
+                <div class="bg-white rounded-2xl p-7 shadow-sm hover:shadow-md border border-slate-200 transition-all">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-xl flex items-center justify-center text-xl font-bold mb-5">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Dignificación de LUZ y Universidades</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Presupuesto justo y autónomo para la Universidad del Zulia (LUZ) y tecnológicos públicos. Rescate de comedores, transporte estudiantil y becas de excelencia para retener el talento estudiantil.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+                        <li><i class="fa-solid fa-check text-pjYellow mr-2"></i>Salarios competitivos para profesores jóvenes</li>
+                        <li><i class="fa-solid fa-check text-pjYellow mr-2"></i>Seguridad garantizada en los campus</li>
+                    </ul>
+                </div>
+
+                <!-- Proposal 5 -->
+                <div class="bg-white rounded-2xl p-7 shadow-sm hover:shadow-md border border-slate-200 transition-all">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-700 rounded-xl flex items-center justify-center text-xl font-bold mb-5">
+                        <i class="fa-solid fa-passport"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Plan Retorno y Diáspora Zuliana</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Mesa de articulación con los millones de jóvenes zulianos en el exterior. Programas de reinserción económica, homologación rápida de títulos y captación de remesas de inversión productiva regional.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-1.5 border-t border-slate-100 pt-3">
+                        <li><i class="fa-solid fa-check text-pjYellow mr-2"></i>Red global de profesionales zulianos</li>
+                        <li><i class="fa-solid fa-check text-pjYellow mr-2"></i>Facilidades para repatriación de emprendedores</li>
+                    </ul>
+                </div>
+
+                <!-- Proposal 6 -->
+                <div class="bg-white rounded-2xl p-7 shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-pjYellow text-pjBlack rounded-xl flex items-center justify-center text-xl font-bold mb-5">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Voto Joven y Defensa Electoral</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            Exigencia constante de apertura permanente del Registro Electoral en cada una de las 109 parroquias del estado Zulia para que cada joven pueda sufragar y elegir su destino libremente.
+                        </p>
+                    </div>
+                    <a href="#sumate" class="text-pjBlue hover:text-black font-bold text-sm inline-flex items-center gap-2">
+                        <span>¿Quieres proponer una ley o proyecto? Escríbenos</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Municipios Zulianos / Presencia Territorial -->
+    <section id="municipios" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-pjBlue font-extrabold bg-blue-50 px-3 py-1 rounded-full">
+                        Presencia en el Estado
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-pjDarkNavy mt-2">Los 21 Municipios del Zulia Unidos</h2>
+                    <p class="text-slate-600 max-w-xl text-sm mt-1">
+                        Desde el norte guajiro hasta el sur platanero, nuestra juventud tiene representación activa en las 5 subregiones zulianas.
+                    </p>
+                </div>
+                <!-- Region filter buttons -->
+                <div class="mt-4 md:mt-0 flex flex-wrap gap-2 text-xs font-bold" id="municipioFilters">
+                    <button class="filter-btn active bg-pjDarkNavy text-white px-3 py-2 rounded-lg" data-filter="all">Todos (21)</button>
+                    <button class="filter-btn bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg" data-filter="metropolitana">Metropolitana</button>
+                    <button class="filter-btn bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg" data-filter="col">Costa Oriental</button>
+                    <button class="filter-btn bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg" data-filter="sur">Sur del Lago</button>
+                    <button class="filter-btn bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg" data-filter="perija">Perijá y Guajira</button>
+                </div>
+            </div>
+
+            <!-- Municipalities Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="municipiosGrid">
+                <!-- Maracaibo -->
+                <div class="muni-card bg-slate-50 border border-slate-200 hover:border-pjYellow p-4 rounded-xl transition" data-subregion="metropolitana">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-slate-900">Maracaibo</h4>
+                        <span class="text-[10px] bg-pjYellow text-pjBlack font-black px-2 py-0.5 rounded">18 Parroquias</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">Sede Regional Central, universidades y coordinación metropolitana.</p>
+                    <div class="mt-3 flex items-center gap-2 text-xs text-pjBlue font-semibold">
+                        <i class="fa-solid fa-users text-pjYellow"></i> 18 Comités Juveniles
+                    </div>
+                </div>
+
+                <!-- San Francisco -->
+                <div class="muni-card bg-slate-50 border border-slate-200 hover:border-pjYellow p-4 rounded-xl transition" data-subregion="metropolitana">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-slate-900">San Francisco</h4>
+                        <span class="text-[10px] bg-slate-200 text-slate-800 font-bold px-2 py-0.5 rounded">7 Parroquias</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">Liderazgo estudiantil activo y comités comunitarios en El Bajo, Domitila Flores y más.</p>
+                    <div class="mt-3 flex items-center gap-2 text-xs text-pjBlue font-semibold">
+                        <i class="fa-solid fa-users text-pjYellow"></i> 7 Comités Juveniles
+                    </div>
+                </div>
+
+                <!-- Cabimas -->
+                <div class="muni-card bg-slate-50 border border-slate-200 hover:border-pjYellow p-4 rounded-xl transition" data-subregion="col">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-slate-900">Cabimas</h4>
+                        <span class="text-[10px] bg-blue-100 text-pjBlue font-bold px-2 py-0.5 rounded">Costa Oriental</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">Juventud técnica, universitaria y petrolera en defensa del futuro de la COL.</p>
+                    <div class="mt-3 flex items-center gap-2 text-xs text-pjBlue font-semibold">
+                        <i class="fa-solid fa-users text-pjYellow"></i> 9 Parroquias Activas
+                    </div>
+                </div>
+
+                <!-- Lagunillas (Ciudad Ojeda) -->
+                <div class="muni-card bg-slate-50 border border-slate-200 hover:border-pjYellow p-4 rounded-xl transition" data-subregion="col">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-slate-900">Lagunillas</h4>
+                        <span class="text-[10px] bg-blue-100 text-pjBlue font-bold px-2 py-0.5 rounded">Costa Oriental</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">Núcleo juvenil de Ciudad Ojeda, activismo cívico y voluntariado social.</p>
+                    <div class="mt-3 flex items-center gap-2 text-xs text-pjBlue font-semibold">
+                        <i class="fa-solid fa-users text-pjYellow"></i> 6 Comités Parroquiales
+                    </div>
+                </div>
+
+                <!-- Machiques de Perijá -->
+                <div class="muni-card bg-slate-50 border border-slate-200 hover:border-pjYellow p-4 rounded-xl transition" data-subregion="perija">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-slate-900">Machiques de Perijá</h4>
+                        <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Subregión Perijá</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">Juventud agropecuaria y representación de comunidades indígenas.</p>
+                    <div class="mt-3 flex items-center gap-2 text-xs text-pjBlue font-semibold">
+                        <i class="fa-solid fa-users text-pjYellow"></i> Comités Rurales
+                    </div>
+                </div>
+
+                <!-- Colón (Santa Bárbara) -->
+                <div class="muni-card bg-slate-50 border border-slate-200 hover:border-pjYellow p-4 rounded-xl transition" data-subregion="sur">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-slate-900">Colón</h4>
+                        <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded">Sur del Lago</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">Defensa de productores agrícolas, estudiantes del Unesur y líderes zonales.</p>
+                    <div class="mt-3 flex items-center gap-2 text-xs text-pjBlue font-semibold">
+                        <i class="fa-solid fa-users text-pjYellow"></i> Comités Agrarios
+                    </div>
+                </div>
+
+                <!-- Santa Rita -->
+                <div class="muni-card bg-slate-50 border border-slate-200 hover:border-pjYellow p-4 rounded-xl transition" data-subregion="col">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-slate-900">Santa Rita</h4>
+                        <span class="text-[10px] bg-blue-100 text-pjBlue font-bold px-2 py-0.5 rounded">Costa Oriental</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">Activismo ribereño y programas juveniles de apoyo deportivo.</p>
+                    <div class="mt-3 flex items-center gap-2 text-xs text-pjBlue font-semibold">
+                        <i class="fa-solid fa-users text-pjYellow"></i> Comité Parroquial
+                    </div>
+                </div>
+
+                <!-- Mara -->
+                <div class="muni-card bg-slate-50 border border-slate-200 hover:border-pjYellow p-4 rounded-xl transition" data-subregion="perija">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-slate-900">Mara</h4>
+                        <span class="text-[10px] bg-indigo-100 text-indigo-800 font-bold px-2 py-0.5 rounded">Subregión Guajira</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-1">Juventud wayuu y añú integrada por los derechos y el progreso local.</p>
+                    <div class="mt-3 flex items-center gap-2 text-xs text-pjBlue font-semibold">
+                        <i class="fa-solid fa-users text-pjYellow"></i> 7 Parroquias Activas
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Municipalities List Callout -->
+            <div class="mt-8 p-4 bg-slate-100 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-600">
+                <span>
+                    <strong>Cobertura completa:</strong> También con presencia en Baralt, Valmore Rodríguez, Miranda, Simón Bolívar, La Cañada de Urdaneta, Jesús Enrique Lossada, Rosario de Perijá, Guajira, Catatumbo, Francisco Javier Pulgar, Sucre y Jesús María Semprúm.
+                </span>
+                <a href="#sumate" class="bg-pjDarkNavy text-white hover:bg-pjYellow hover:text-black font-bold px-4 py-2 rounded-lg whitespace-nowrap transition">
+                    Sé coordinador en tu municipio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Noticias y Comunicados Zulia -->
+    <section id="noticias" class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-pjBlue font-extrabold bg-blue-100/60 px-3 py-1 rounded-full">
+                        Voz y Acción
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-pjDarkNavy mt-2">Noticias y Comunicados Oficiales</h2>
+                    <p class="text-slate-600 max-w-xl text-sm mt-1">
+                        Sigue de cerca los pronunciamientos, movilizaciones y actividades de la Coordinación Juvenil de PJ Zulia.
+                    </p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <span class="text-xs font-semibold text-slate-500">Actualizado regularmente</span>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Noticia 1 -->
+                <article class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg transition-all flex flex-col">
+                    <div class="h-48 bg-slate-800 relative flex items-center justify-center p-6 text-center overflow-hidden group">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80')"></div>
+                        <span class="absolute top-4 left-4 bg-pjYellow text-pjBlack text-[10px] font-black uppercase px-2 py-0.5 rounded shadow">
+                            Maracaibo
+                        </span>
+                        <div class="relative z-10 text-white">
+                            <i class="fa-solid fa-bullhorn text-3xl text-pjYellow mb-2"></i>
+                            <p class="text-xs font-semibold tracking-wide uppercase">Exigencia Electoral</p>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 font-medium">10 de Octubre, 2026</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-1 leading-snug hover:text-pjBlue transition">
+                                Jóvenes de PJ Zulia exigen puntos permanentes del CNE en las 109 parroquias
+                            </h3>
+                            <p class="text-slate-600 text-xs mt-3 line-clamp-3">
+                                La Coordinación Juvenil Regional consignó un documento formal ante la oficina regional electoral exigiendo que los jóvenes zulianos puedan inscribirse sin viajar horas hasta la capital.
+                            </p>
+                        </div>
+                        <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+                            <span class="text-pjBlue">Secretaría de Organización</span>
+                            <button onclick="openNewsModal('Jóvenes de PJ Zulia exigen puntos permanentes del CNE en las 109 parroquias', 'La Coordinación Juvenil Regional de Primero Justicia Zulia se movilizó pacíficamente este lunes para exigir a las autoridades electorales la descentralización de los puntos del Registro Electoral. El Coordinador Juvenil Regional Adjunto enfatizó que más de 120.000 jóvenes en edad de votar en el Zulia no deben sufrir trabas burocráticas ni traslados costosos desde la Costa Oriental o el Sur del Lago hacia la sede en Maracaibo.')" class="text-slate-700 hover:text-pjYellow font-bold flex items-center gap-1">
+                                Leer más <i class="fa-solid fa-angle-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Noticia 2 -->
+                <article class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg transition-all flex flex-col">
+                    <div class="h-48 bg-slate-800 relative flex items-center justify-center p-6 text-center overflow-hidden group">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80')"></div>
+                        <span class="absolute top-4 left-4 bg-pjYellow text-pjBlack text-[10px] font-black uppercase px-2 py-0.5 rounded shadow">
+                            Costa Oriental
+                        </span>
+                        <div class="relative z-10 text-white">
+                            <i class="fa-solid fa-handshake-simple text-3xl text-pjYellow mb-2"></i>
+                            <p class="text-xs font-semibold tracking-wide uppercase">Voluntariado</p>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 font-medium">4 de Octubre, 2026</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-1 leading-snug hover:text-pjBlue transition">
+                                Jornada "Zulia Solidario" atiende a comunidades de Cabimas y Santa Rita
+                            </h3>
+                            <p class="text-slate-600 text-xs mt-3 line-clamp-3">
+                                Más de 50 voluntarios juveniles llevaron actividades recreativas, apoyo escolar y recuperación de una cancha deportiva comunitaria en la Costa Oriental del Lago.
+                            </p>
+                        </div>
+                        <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+                            <span class="text-pjBlue">Acción Social</span>
+                            <button onclick="openNewsModal('Jornada Zulia Solidario atiende a comunidades de Cabimas y Santa Rita', 'Con gran entusiasmo y vocación de servicio, los cuadros juveniles de Primero Justicia en Cabimas y Santa Rita realizaron la jornada integral Zulia Solidario. Se logró la restauración de luminarias y pintura en canchas vecinales, además de dictar charlas de formación ciudadana a más de 200 niños y adolescentes de la zona.')" class="text-slate-700 hover:text-pjYellow font-bold flex items-center gap-1">
+                                Leer más <i class="fa-solid fa-angle-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Noticia 3 -->
+                <article class="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg transition-all flex flex-col">
+                    <div class="h-48 bg-slate-800 relative flex items-center justify-center p-6 text-center overflow-hidden group">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80')"></div>
+                        <span class="absolute top-4 left-4 bg-pjYellow text-pjBlack text-[10px] font-black uppercase px-2 py-0.5 rounded shadow">
+                            Formación
+                        </span>
+                        <div class="relative z-10 text-white">
+                            <i class="fa-solid fa-graduation-cap text-3xl text-pjYellow mb-2"></i>
+                            <p class="text-xs font-semibold tracking-wide uppercase">Liderazgo</p>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 font-medium">27 de Septiembre, 2026</span>
+                            <h3 class="text-lg font-bold text-slate-900 mt-1 leading-snug hover:text-pjBlue transition">
+                                Culmina la 4ta cohorte de la Escuela de Formación Política Juvenil
+                            </h3>
+                            <p class="text-slate-600 text-xs mt-3 line-clamp-3">
+                                65 nuevos líderes de San Francisco, Maracaibo y Machiques recibieron su certificación en oratoria, formulación de proyectos comunitarios y doctrina humanista.
+                            </p>
+                        </div>
+                        <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+                            <span class="text-pjBlue">Instituto de Formación</span>
+                            <button onclick="openNewsModal('Culmina la 4ta cohorte de la Escuela de Formación Política Juvenil', 'Primero Justicia Zulia graduó a su cuarta cohorte del año con 65 jóvenes líderes que ahora asumen responsabilidades en sus respectivas parroquias. La formación continua es el pilar fundamental que garantiza servidores públicos íntegros, con conocimiento técnico y vocación social para el Zulia de progreso.')" class="text-slate-700 hover:text-pjYellow font-bold flex items-center gap-1">
+                                Leer más <i class="fa-solid fa-angle-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Escuela de Formación y Liderazgo -->
+    <section id="formacion" class="py-20 bg-pjDarkNavy text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 space-y-5">
+                    <span class="text-xs uppercase tracking-widest text-pjYellow font-black bg-yellow-400/10 border border-pjYellow/30 px-3 py-1 rounded-full">
+                        Academia de Liderazgo PJ Zulia
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black leading-tight">
+                        La formación es la garantía de un cambio serio y duradero
+                    </h2>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        En Primero Justicia no improvisamos. Creemos en dotar a cada militante y voluntario de herramientas analíticas, éticas y operativas para gobernar con solvencia y defender los derechos de los zulianos.
+                    </p>
+
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-center gap-3 bg-slate-800/80 p-3 rounded-xl border border-slate-700">
+                            <div class="w-8 h-8 rounded-lg bg-pjYellow text-pjBlack font-bold flex items-center justify-center">1</div>
+                            <span class="text-sm font-semibold">Humanismo y Doctrina de Centro Democrático</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-slate-800/80 p-3 rounded-xl border border-slate-700">
+                            <div class="w-8 h-8 rounded-lg bg-pjYellow text-pjBlack font-bold flex items-center justify-center">2</div>
+                            <span class="text-sm font-semibold">Oratoria, Comunicación Política y Redes Digitales</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-slate-800/80 p-3 rounded-xl border border-slate-700">
+                            <div class="w-8 h-8 rounded-lg bg-pjYellow text-pjBlack font-bold flex items-center justify-center">3</div>
+                            <span class="text-sm font-semibold">Políticas Públicas para la Descentralización del Zulia</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-slate-800/80 p-3 rounded-xl border border-slate-700">
+                            <div class="w-8 h-8 rounded-lg bg-pjYellow text-pjBlack font-bold flex items-center justify-center">4</div>
+                            <span class="text-sm font-semibold">Defensa del Voto y Testigos de Mesa Electorales</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 bg-slate-800/90 border border-slate-700 p-8 rounded-3xl shadow-2xl">
+                    <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-envelope-open-text text-pjYellow"></i>
+                        Postúlate al Próximo Taller Regional
+                    </h3>
+                    <p class="text-xs text-slate-300 mb-6">
+                        Modalidad híbrida: Clases virtuales y encuentros presenciales en Maracaibo y Cabimas los fines de semana.
+                    </p>
+
+                    <form id="trainingQuickForm" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Nombre y Apellido</label>
+                            <input type="text" id="trainName" required placeholder="Ej. Carlos Morales" class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-pjYellow">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Teléfono / WhatsApp</label>
+                                <input type="tel" id="trainPhone" required placeholder="0414-XXXXXXX" class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-pjYellow">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Municipio</label>
+                                <select id="trainMuni" class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-pjYellow">
+                                    <option value="Maracaibo">Maracaibo</option>
+                                    <option value="San Francisco">San Francisco</option>
+                                    <option value="Cabimas">Cabimas</option>
+                                    <option value="Lagunillas">Lagunillas</option>
+                                    <option value="Otro">Otro Municipio</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full bg-pjYellow hover:bg-pjYellowHover text-pjBlack font-black py-3 rounded-xl shadow-lg transition duration-200">
+                            Solicitar Cupo en Formación
+                        </button>
+                    </form>
+                    <p id="trainSuccess" class="hidden text-xs text-green-400 font-bold mt-3 text-center">
+                        <i class="fa-solid fa-check-circle"></i> ¡Solicitud enviada! Nos comunicaremos vía WhatsApp.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de Voluntariado y Afiliación Juvenil -->
+    <section id="sumate" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-slate-900 via-pjDarkNavy to-slate-900 rounded-3xl p-8 sm:p-12 shadow-2xl text-white border-2 border-pjYellow relative overflow-hidden">
+                <div class="text-center max-w-2xl mx-auto space-y-3 mb-10">
+                    <div class="inline-flex items-center gap-2 bg-pjYellow text-pjBlack px-3.5 py-1 rounded-full text-xs font-black uppercase">
+                        <i class="fa-solid fa-flag"></i> Registro de Jóvenes por el Zulia
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white">¡Súmate al Cambio en el Zulia!</h2>
+                    <p class="text-slate-300 text-sm">
+                        Sé protagonista de la reconstrucción democrática. Completa tus datos y la <strong>Coordinación Juvenil Regional</strong> se pondrá en contacto contigo para asignarte a tu equipo municipal o universitario.
+                    </p>
+                </div>
+
+                <!-- Registration Form -->
+                <form id="volunteerForm" class="space-y-6">
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-pjYellow mb-1.5" for="vName">Nombre Completo *</label>
+                            <input type="text" id="vName" required class="w-full bg-slate-800/90 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pjYellow" placeholder="Ej. Gabriela Mendoza">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-pjYellow mb-1.5" for="vAge">Edad *</label>
+                            <input type="number" id="vAge" min="14" max="35" required class="w-full bg-slate-800/90 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pjYellow" placeholder="18">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-pjYellow mb-1.5" for="vPhone">Teléfono Móvil (WhatsApp) *</label>
+                            <input type="tel" id="vPhone" required class="w-full bg-slate-800/90 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pjYellow" placeholder="0412-1234567">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-pjYellow mb-1.5" for="vEmail">Correo Electrónico</label>
+                            <input type="email" id="vEmail" class="w-full bg-slate-800/90 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pjYellow" placeholder="correo@ejemplo.com">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-pjYellow mb-1.5" for="vMunicipality">Municipio en el Zulia *</label>
+                            <select id="vMunicipality" required class="w-full bg-slate-800/90 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pjYellow">
+                                <option value="">Selecciona tu municipio...</option>
+                                <option value="Maracaibo">Maracaibo</option>
+                                <option value="San Francisco">San Francisco</option>
+                                <option value="Cabimas">Cabimas</option>
+                                <option value="Lagunillas">Lagunillas</option>
+                                <option value="Machiques de Perijá">Machiques de Perijá</option>
+                                <option value="Colón">Colón (Santa Bárbara)</option>
+                                <option value="Santa Rita">Santa Rita</option>
+                                <option value="Mara">Mara</option>
+                                <option value="Baralt">Baralt</option>
+                                <option value="Valmore Rodríguez">Valmore Rodríguez</option>
+                                <option value="Miranda">Miranda</option>
+                                <option value="Simón Bolívar">Simón Bolívar</option>
+                                <option value="Rosario de Perijá">Rosario de Perijá</option>
+                                <option value="Jesús Enrique Lossada">Jesús Enrique Lossada</option>
+                                <option value="La Cañada de Urdaneta">La Cañada de Urdaneta</option>
+                                <option value="Guajira">Guajira</option>
+                                <option value="Catatumbo">Catatumbo</option>
+                                <option value="Francisco Javier Pulgar">Francisco Javier Pulgar</option>
+                                <option value="Sucre">Sucre</option>
+                                <option value="Jesús María Semprúm">Jesús María Semprúm</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-pjYellow mb-1.5" for="vArea">Área de Interés Principal *</label>
+                            <select id="vArea" required class="w-full bg-slate-800/90 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pjYellow">
+                                <option value="Movilización y Voluntariado">Movilización y Voluntariado Comunitario</option>
+                                <option value="Formación Política">Formación Política y Debates</option>
+                                <option value="Comunicaciones y Redes">Comunicaciones y Creación de Contenido</option>
+                                <option value="Movimiento Estudiantil">Movimiento Universitario y LUZ</option>
+                                <option value="Defensa Electoral">Defensa del Voto y Testigo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-pjYellow mb-1.5" for="vNote">¿Cómo te gustaría colaborar en tu comunidad? (Opcional)</label>
+                        <textarea id="vNote" rows="2" class="w-full bg-slate-800/90 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-pjYellow" placeholder="Cuéntanos brevemente sobre tus ideas o experiencia..."></textarea>
+                    </div>
+
+                    <div class="pt-2 text-center">
+                        <button type="submit" class="w-full sm:w-auto px-10 py-4 bg-pjYellow hover:bg-pjYellowHover text-pjBlack font-black text-base rounded-2xl shadow-xl transition-all transform active:scale-95 flex items-center justify-center gap-2 mx-auto">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Enviar Registro de Líder Juvenil</span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Feedback Message Container -->
+                <div id="formSuccessMessage" class="hidden mt-6 p-6 bg-yellow-500/10 border border-pjYellow rounded-2xl text-center space-y-2">
+                    <div class="w-12 h-12 bg-pjYellow text-pjBlack rounded-full flex items-center justify-center mx-auto text-xl font-bold">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-pjYellow">¡Registro Recibido con Éxito!</h3>
+                    <p class="text-sm text-slate-200">
+                        Bienvenido al equipo. La Coordinación Juvenil Regional de Primero Justicia Zulia te contactará en breve para invitarte al grupo de trabajo de tu parroquia y próximas actividades.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Institutional Footer -->
+    <footer class="bg-pjBlack text-slate-400 border-t-4 border-pjYellow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+                <!-- Col 1: Identity -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-pjYellow flex items-center justify-center font-black text-lg text-pjBlack border border-black">
+                            PJ
+                        </div>
+                        <div>
+                            <span class="font-extrabold text-white text-base tracking-tight block">PRIMERO JUSTICIA</span>
+                            <span class="text-xs font-bold text-pjYellow uppercase">Juventud Estado Zulia</span>
+                        </div>
+                    </div>
+                    <p class="text-xs leading-relaxed text-slate-400 max-w-sm">
+                        Plataforma institucional de la juventud del partido Primero Justicia en el estado Zulia. Promoviendo el liderazgo ético, la justicia y la dignidad en cada rincón zuliano.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="https://twitter.com/Pr1meroJusticia" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-pjYellow hover:text-black flex items-center justify-center transition text-white">
+                            <i class="fa-brands fa-x-twitter text-sm"></i>
+                        </a>
+                        <a href="https://instagram.com/pjzulia" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-pjYellow hover:text-black flex items-center justify-center transition text-white">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                        </a>
+                        <a href="https://facebook.com/primerojusticiazulia" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-pjYellow hover:text-black flex items-center justify-center transition text-white">
+                            <i class="fa-brands fa-facebook-f text-sm"></i>
+                        </a>
+                        <a href="https://tiktok.com/@juventudpjzulia" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-pjYellow hover:text-black flex items-center justify-center transition text-white">
+                            <i class="fa-brands fa-tiktok text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigation Links -->
+                <div>
+                    <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4 border-l-2 border-pjYellow pl-2">Portal</h4>
+                    <ul class="space-y-2.5 text-xs">
+                        <li><a href="#inicio" class="hover:text-pjYellow transition">Inicio</a></li>
+                        <li><a href="#nosotros" class="hover:text-pjYellow transition">Estructura Juvenil</a></li>
+                        <li><a href="#propuestas" class="hover:text-pjYellow transition">Propuestas Zulia</a></li>
+                        <li><a href="#municipios" class="hover:text-pjYellow transition">Municipios</a></li>
+                        <li><a href="#noticias" class="hover:text-pjYellow transition">Noticias y Prensa</a></li>
+                        <li><a href="#formacion" class="hover:text-pjYellow transition">Escuela de Formación</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Enlaces Institucionales Oficiales -->
+                <div>
+                    <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4 border-l-2 border-pjYellow pl-2">Institucional</h4>
+                    <ul class="space-y-2.5 text-xs">
+                        <li><a href="https://primerojusticia.org.ve" target="_blank" rel="noopener noreferrer" class="hover:text-pjYellow transition flex items-center gap-1.5">PJ Nacional <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a></li>
+                        <li><a href="https://primerojusticia.org.ve/principios" target="_blank" rel="noopener noreferrer" class="hover:text-pjYellow transition">Declaración de Principios</a></li>
+                        <li><a href="https://primerojusticia.org.ve/estatutos" target="_blank" rel="noopener noreferrer" class="hover:text-pjYellow transition">Estatutos Partidistas</a></li>
+                        <li><a href="#nosotros" class="hover:text-pjYellow transition">Coordinación Juvenil Regional Adjunta</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact & Location in Zulia -->
+                <div>
+                    <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4 border-l-2 border-pjYellow pl-2">Contacto Zulia</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-pjYellow mt-1"></i>
+                            <span>Sede Regional: Maracaibo, Estado Zulia, Venezuela</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-pjYellow"></i>
+                            <span>juventud@pjzulia.org.ve</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-pjYellow"></i>
+                            <span>Atención Directa: WhatsApp Regional</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="mt-12 pt-8 border-t border-slate-800 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p>© 2026 Primero Justicia Estado Zulia - Juventud. Todos los derechos reservados.</p>
+                <p class="text-slate-400">Por la justicia y la libertad del Zulia y de toda Venezuela.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive News Reader Modal -->
+    <div id="newsModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border-t-4 border-pjYellow">
+            <button onclick="closeNewsModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-xl p-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <span class="text-xs font-black uppercase text-pjBlue bg-blue-50 px-2.5 py-1 rounded">Comunicado PJ Zulia</span>
+            <h3 id="modalTitle" class="text-xl font-bold text-slate-900 mt-3"></h3>
+            <p id="modalContent" class="text-sm text-slate-600 mt-4 leading-relaxed"></p>
+            <div class="mt-6 pt-4 border-t border-slate-100 text-right">
+                <button onclick="closeNewsModal()" class="bg-pjDarkNavy text-white hover:bg-slate-800 font-bold px-5 py-2.5 rounded-xl text-xs">
+                    Cerrar Lectura
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Interactions Logic -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Municipality Filters Logic
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const muniCards = document.querySelectorAll('.muni-card');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-pjDarkNavy', 'text-white', 'active');
+                    b.classList.add('bg-slate-100', 'text-slate-700');
+                });
+                btn.classList.add('bg-pjDarkNavy', 'text-white', 'active');
+                btn.classList.remove('bg-slate-100', 'text-slate-700');
+
+                const filter = btn.getAttribute('data-filter');
+                muniCards.forEach(card => {
+                    const subregion = card.getAttribute('data-subregion');
+                    if (filter === 'all' || subregion === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Volunteer Registration Form Handler
+        const volunteerForm = document.getElementById('volunteerForm');
+        const formSuccessMessage = document.getElementById('formSuccessMessage');
+
+        volunteerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = volunteerForm.querySelector('button[type="submit"]');
+            const originalBtnContent = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
+
+            const payload = {
+                tipo: 'VOLUNTARIADO_GENERAL',
+                nombre_completo: document.getElementById('vName').value.trim(),
+                edad: parseInt(document.getElementById('vAge').value, 10),
+                telefono: document.getElementById('vPhone').value.trim(),
+                email: document.getElementById('vEmail').value.trim() || null,
+                municipio: document.getElementById('vMunicipality').value,
+                area_interes: document.getElementById('vArea').value,
+                mensaje: document.getElementById('vNote').value.trim() || null
+            };
+
+            try {
+                const res = await window.SigoLeads.submitLead(payload);
+                volunteerForm.classList.add('hidden');
+                formSuccessMessage.classList.remove('hidden');
+                if (res.status === 'queued') {
+                    const descEl = formSuccessMessage.querySelector('p');
+                    if (descEl) descEl.textContent = res.message;
+                }
+            } catch (err) {
+                alert('Ocurrió un error al procesar el registro. Inténtalo nuevamente.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnContent;
+            }
+        });
+
+        // Quick Training Form Handler
+        const trainingQuickForm = document.getElementById('trainingQuickForm');
+        const trainSuccess = document.getElementById('trainSuccess');
+
+        trainingQuickForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = trainingQuickForm.querySelector('button[type="submit"]');
+            const originalBtnContent = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Procesando...';
+
+            const payload = {
+                tipo: 'FORMACION_POLITICA',
+                nombre_completo: document.getElementById('trainName').value.trim(),
+                telefono: document.getElementById('trainPhone').value.trim(),
+                municipio: document.getElementById('trainMuni').value,
+                area_interes: 'Formación Política y Liderazgo',
+                mensaje: 'Postulación a través de Taller Regional Rápido'
+            };
+
+            try {
+                const res = await window.SigoLeads.submitLead(payload);
+                trainSuccess.classList.remove('hidden');
+                if (res.status === 'queued') {
+                    trainSuccess.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> ' + res.message;
+                }
+                trainingQuickForm.reset();
+            } catch (err) {
+                alert('No se pudo enviar la solicitud. Intenta más tarde.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnContent;
+            }
+        });
+
+        // News Modal System
+        const newsModal = document.getElementById('newsModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+
+        function openNewsModal(title, content) {
+            modalTitle.textContent = title;
+            modalContent.textContent = content;
+            newsModal.classList.remove('hidden');
+        }
+
+        function closeNewsModal() {
+            newsModal.classList.add('hidden');
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === newsModal) {
+                closeNewsModal();
+            }
+        });
+    </script>
+    <!-- Script de Ingesta Resiliente de Leads SIGO -->
+    <script src="js/landing-leads.js"></script>
+</body>
+</html>

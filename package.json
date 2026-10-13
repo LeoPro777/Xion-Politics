@@ -1,0 +1,25 @@
+{
+  "name": "sigo-pj-zulia",
+  "version": "1.0.0",
+  "description": "Sistema de Información Geográfica y Operativa - Primero Justicia Zulia",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "dev:backend": "python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000 --reload",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:landing": "python -m http.server 3000 --directory landing",
+    "install:all": "npm --prefix frontend install",
+    "build:frontend": "npm --prefix frontend run build",
+    "test:backend": "pytest backend/tests"
+  },
+  "keywords": [
+    "sigo",
+    "primero-justicia",
+    "zulia",
+    "fastapi",
+    "react",
+    "vite"
+  ],
+  "author": "Secretaría Juvenil Regional Primero Justicia Zulia",
+  "license": "UNLICENSED"
+}

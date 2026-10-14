@@ -7,11 +7,9 @@ import {
   Sparkles,
   BookOpen,
   Send,
-  Lock,
   ArrowRight,
   MapPin,
   Vote,
-  Target,
   HeartHandshake,
   Newspaper,
   Calendar,
@@ -23,8 +21,17 @@ import {
   Search,
   Flame,
   Clock,
-  ShieldCheck
+  ShieldCheck,
+  Instagram,
+  MessageCircle,
+  ExternalLink
 } from 'lucide-react';
+
+export const TikTokIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .58.04.86.11V9.4a6.33 6.33 0 0 0-.86-.06A6.34 6.34 0 0 0 3 15.68a6.34 6.34 0 0 0 10.82 4.49 6.3 6.3 0 0 0 1.86-4.5V8.55a8.28 8.28 0 0 0 4.91 1.6V6.69z" />
+  </svg>
+);
 
 interface RevealProps {
   children: React.ReactNode;
@@ -89,6 +96,86 @@ const Reveal: React.FC<RevealProps> = ({
   );
 };
 
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  municipality: string;
+  bio: string;
+  imageUrl: string;
+  instagram: string;
+  tiktok: string;
+  badge: string;
+}
+
+export const REGIONAL_TEAM: TeamMember[] = [
+  {
+    id: 'andres-robayo',
+    name: 'Andrés Robayo',
+    role: 'Coordinador Juvenil Regional',
+    municipality: 'Zulia',
+    bio: 'Abogado y dirigente juvenil. Conduce la vocería política de la juventud justiciera y la articulación con los 21 municipios del Estado.',
+    imageUrl: '/images/liderazgo-4.jpeg',
+    instagram: 'andresrobayo_pj',
+    tiktok: 'andresrobayo_pj',
+    badge: 'Coordinación Regional'
+  },
+  {
+    id: 'daniel-rincon',
+    name: 'Daniel Rincón',
+    role: 'Coordinador Juvenil Regional Adjunto',
+    municipality: 'Maracaibo',
+    bio: 'Ingeniero y activista social. Encargado del despliegue operativo territorial, enlace con estructuras parroquiales y logística de calle.',
+    imageUrl: '/images/liderazgo-1.jpeg',
+    instagram: 'danielrincon_pj',
+    tiktok: 'danielrincon_pj',
+    badge: 'Dirección Operativa'
+  },
+  {
+    id: 'maria-victoria',
+    name: 'María Victoria González',
+    role: 'Secretaría de Organización Juvenil',
+    municipality: 'San Francisco',
+    bio: 'Politóloga. Responsable de la conformación de los comités parroquiales, el censo militante y la activación de líderes comunitarios.',
+    imageUrl: '/images/liderazgo-2.jpeg',
+    instagram: 'mavi_gonzalezpj',
+    tiktok: 'mavi_gonzalezpj',
+    badge: 'Organización'
+  },
+  {
+    id: 'carlos-villalobos',
+    name: 'Carlos Villalobos',
+    role: 'Secretaría de Defensa del Voto',
+    municipality: 'Cabimas',
+    bio: 'Estudiante de Derecho en LUZ. Coordinador del padrón electoral juvenil y la formación técnica de testigos de mesa en el Zulia.',
+    imageUrl: '/images/liderazgo-3.jpeg',
+    instagram: 'carlosv_zulia',
+    tiktok: 'carlosv_zulia',
+    badge: 'Electoral'
+  },
+  {
+    id: 'stefany-camacho',
+    name: 'Stefany Camacho',
+    role: 'Secretaría de Acción Social',
+    municipality: 'Lagunillas',
+    bio: 'Médico comunitaria y voluntaria. Dirige las jornadas "Zulia Solidario", despistajes de salud y recuperación de canchas deportivas.',
+    imageUrl: '/images/liderazgo-1.jpeg',
+    instagram: 'stefy_camachopj',
+    tiktok: 'stefy_camachopj',
+    badge: 'Voluntariado'
+  },
+  {
+    id: 'alejandro-morales',
+    name: 'Alejandro Morales',
+    role: 'Secretaría de Medios y Redes',
+    municipality: 'Maracaibo',
+    bio: 'Comunicador social y creador de contenido. Lidera las campañas audiovisuales, coberturas en vivo en TikTok e Instagram.',
+    imageUrl: '/images/liderazgo-4.jpeg',
+    instagram: 'alejomorales_pj',
+    tiktok: 'jovenespjzulia',
+    badge: 'Comunicaciones'
+  }
+];
 
 interface NewsArticle {
   id: string;
@@ -118,7 +205,7 @@ const NEWS_DATA: NewsArticle[] = [
       'El equipo juvenil consignó un documento técnico avalado por delegados de los 21 municipios, señalando que los jóvenes de zonas alejadas como el Sur del Lago, La Guajira y la Costa Oriental enfrentan costos de transporte de más de $25 solo para movilizarse a formalizar su inscripción electoral.',
       '"No permitiremos que la burocracia asfixie la participación ciudadana de los jóvenes. Cada una de las 109 parroquias del Zulia tiene derecho a un punto con máquinas operativas y horario continuo", declaró el equipo de Organización Juvenil.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: '/images/liderazgo-4.jpeg',
     department: 'Secretaría de Organización y Voto',
     isFeatured: true
   },
@@ -135,7 +222,7 @@ const NEWS_DATA: NewsArticle[] = [
       'Durante el operativo se logró la reactivación del alumbrado en dos canchas deportivas vecinales y se entregaron insumos escolares a niños del sector. Además, el voluntariado médico asistencial de la juventud brindó despistaje de salud general a abuelos de la comunidad.',
       'La meta establecida para este último trimestre es replicar este formato en al menos 15 parroquias adicionales de la cuenca del Lago de Maracaibo.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/liderazgo-3.jpeg',
     department: 'Acción y Justicia Social'
   },
   {
@@ -151,7 +238,7 @@ const NEWS_DATA: NewsArticle[] = [
       'Los graduandos expusieron proyectos de ordenanzas municipales enfocadas en primer empleo juvenil, digitalización de trámites vecinales y sustentabilidad ecológica para los municipios de la entidad.',
       '"Un partido político responsable forma servidores públicos de alto nivel técnico y profunda sensibilidad humana antes de aspirar a representaciones de poder", puntualizó la Secretaría de Formación.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/liderazgo-2.jpeg',
     department: 'Instituto de Formación Política'
   },
   {
@@ -167,7 +254,7 @@ const NEWS_DATA: NewsArticle[] = [
       'Plantearon un plan de cinco puntos de reactivación que incluye créditos blandos a cooperativas juveniles campesinas y la refacción urgente del muro de contención del Río Chama.',
       'El documento de peticiones fue remitido a gremios de productores y asociaciones civiles del occidente del país.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/images/liderazgo-1.jpeg',
     department: 'Coordinación Agraria y Regional'
   },
   {
@@ -176,17 +263,18 @@ const NEWS_DATA: NewsArticle[] = [
     municipality: '21 Municipios',
     date: '20 de Septiembre, 2026',
     readTime: '2 min de lectura',
-    title: 'Plataforma SIGO alcanza el 100% de cobertura de coordinadores en centros de votación',
-    excerpt: 'El sistema interno de gestión electoral completa la asignación y verificación de testigos principales y suplentes en los centros electorales más complejos del Zulia.',
+    title: 'Juventud PJ consolida red de coordinadores y testigos en centros de votación',
+    excerpt: 'La red juvenil de defensa del voto completa la asignación y verificación de coordinadores en los 21 municipios del Estado Zulia.',
     content: [
-      'Gracias a la implementación del software de gestión electoral SIGO-PJ, la Secretaría Juvenil Regional superó la meta trimestral de captación, consolidando la red de defensores del voto más sólida del occidente.',
-      'La auditoría digital en tiempo real permite verificar la presencia de equipos en parroquias rurales y centros fluviales con un índice de respuesta récord.',
-      'Los directivos estadales iniciaron la ronda de simulacros de comunicación y transmisión de datos electorales con los 21 municipios interconectados.'
+      'La Secretaría Juvenil Regional superó la meta trimestral de captación, consolidando la red de defensores de la democracia más sólida del occidente del país.',
+      'La organización ciudadana permite verificar la presencia de equipos en parroquias rurales y centros lacustres con un índice de respuesta récord.',
+      'Los directivos estadales iniciaron la ronda de simulacros cívicos y articulación comunitaria con delegados juveniles de toda la región.'
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
-    department: 'Secretaría de Tecnologías y Datos'
+    imageUrl: '/images/liderazgo-4.jpeg',
+    department: 'Secretaría de Organización y Voto'
   }
 ];
+
 
 export const LandingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -285,26 +373,40 @@ export const LandingPage: React.FC = () => {
               <Flame className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-black fill-black" /> En Vivo
             </span>
             <span className="text-white/90 font-medium">
-              <strong className="text-pjYellow font-bold">Zulia 2026:</strong> Despliegue en los 21 municipios.
+              <strong className="text-pjYellow font-bold">Zulia 2026:</strong> Movimiento Juvenil activo en los 21 municipios del Estado.
             </span>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3">
-            <span className="text-[11px] text-neutral-400 hidden lg:inline">Acceso Directo Operativo:</span>
-            <button
-              onClick={() => navigate('/login?bypass=admin')}
-              className="bg-pjYellow hover:bg-pjYellowHover text-black font-extrabold px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-md text-[10px] sm:text-[11px] inline-flex items-center gap-1 sm:gap-1.5 transition-all transform hover:scale-105 active:scale-95 shadow-sm"
-              title="Acceso inmediato de Superadministrador"
+          {/* Enlaces directos a Redes Sociales oficiales */}
+          <div className="flex items-center gap-3 sm:gap-4 text-xs font-bold">
+            <span className="text-[11px] text-neutral-400 hidden lg:inline">Conéctate:</span>
+            <a
+              href="https://instagram.com/jovenespjzulia"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/80 hover:text-pjYellow transition-colors flex items-center gap-1 text-[11px]"
             >
-              <Lock className="w-3 h-3" />
-              <span>Bypass Superadmin</span>
-            </button>
-            <button
-              onClick={() => navigate('/login')}
-              className="text-white/80 hover:text-pjYellow text-[10px] sm:text-[11px] font-bold underline underline-offset-4 transition"
+              <Instagram className="w-3.5 h-3.5 text-pjYellow" />
+              <span>@jovenespjzulia</span>
+            </a>
+            <a
+              href="https://tiktok.com/@jovenespjzulia"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/80 hover:text-pjYellow transition-colors flex items-center gap-1 text-[11px]"
             >
-              Portal SIGO
-            </button>
+              <TikTokIcon className="w-3.5 h-3.5 text-pjYellow" />
+              <span className="hidden xs:inline">TikTok</span>
+            </a>
+            <a
+              href="https://wa.me/584121234567"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/80 hover:text-emerald-400 transition-colors flex items-center gap-1 text-[11px]"
+            >
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="hidden sm:inline">WhatsApp</span>
+            </a>
           </div>
         </div>
       </div>
@@ -333,25 +435,30 @@ export const LandingPage: React.FC = () => {
           </div>
 
           {/* Navigation Links (Desktop) */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-bold text-neutral-800">
-            <a href="#noticias" className="text-black hover:text-black flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-pjYellow/20 border border-pjYellow font-extrabold transition">
-              <Megaphone className="w-4 h-4 text-black" />
-              <span>Noticias y Prensa</span>
+          <nav className="hidden md:flex items-center gap-5 lg:gap-7 text-sm font-bold text-neutral-800">
+            <a href="#noticias" className="hover:text-black hover:underline underline-offset-4 transition">Noticias</a>
+            <a href="#equipo" className="hover:text-black hover:underline underline-offset-4 transition">Conócenos</a>
+            <a href="#redes" className="hover:text-black hover:underline underline-offset-4 transition flex items-center gap-1">
+              <span>Redes</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-pjYellow" />
             </a>
             <a href="#pilares" className="hover:text-black hover:underline underline-offset-4 transition">Pilares</a>
             <a href="#municipios" className="hover:text-black hover:underline underline-offset-4 transition">21 Municipios</a>
-            <a href="#sumate" className="hover:text-black hover:underline underline-offset-4 transition">Súmate</a>
+            <a href="#sumate" className="text-black flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-pjYellow/20 border border-pjYellow font-extrabold transition">
+              <HeartHandshake className="w-4 h-4 text-black" />
+              <span>Súmate</span>
+            </a>
           </nav>
 
           {/* Action CTAs & Mobile Menu Toggle */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <button
-              onClick={() => navigate('/login')}
+            <a
+              href="#redes"
               className="hidden sm:flex border-2 border-black hover:bg-neutral-100 text-black px-3 sm:px-4 py-2 rounded-xl text-xs font-black transition items-center gap-1.5 shadow-[2px_2px_0px_#000000]"
             >
-              <Lock className="w-3.5 h-3.5" />
-              <span>Acceso SIGO</span>
-            </button>
+              <Instagram className="w-3.5 h-3.5" />
+              <span>@jovenespjzulia</span>
+            </a>
             <a
               href="#sumate"
               className="bg-pjYellow hover:bg-pjYellowHover text-black border-2 border-black px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs font-black shadow-[2px_2px_0px_#000000] sm:shadow-[3px_3px_0px_#000000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center gap-1.5 sm:gap-2"
@@ -380,48 +487,59 @@ export const LandingPage: React.FC = () => {
               <a
                 href="#noticias"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-2 p-3 rounded-xl bg-pjYellow/20 border border-pjYellow text-black font-extrabold"
+                className="flex items-center gap-2 p-2.5 rounded-xl hover:bg-neutral-100 text-neutral-800 border border-neutral-200"
               >
                 <Megaphone className="w-4 h-4 text-black" />
                 <span>Noticias y Prensa Oficial</span>
               </a>
               <a
+                href="#equipo"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2.5 rounded-xl hover:bg-neutral-100 text-neutral-800 border border-neutral-200 flex items-center justify-between"
+              >
+                <span>Conócenos: Equipo Regional</span>
+                <Users className="w-4 h-4 text-black" />
+              </a>
+              <a
+                href="#redes"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2.5 rounded-xl bg-pjYellow/20 border border-pjYellow text-black font-extrabold flex items-center justify-between"
+              >
+                <span>Nuestras Redes (IG & TikTok)</span>
+                <Instagram className="w-4 h-4 text-black" />
+              </a>
+              <a
                 href="#pilares"
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-3 rounded-xl hover:bg-neutral-100 text-neutral-800 border border-neutral-200"
+                className="p-2.5 rounded-xl hover:bg-neutral-100 text-neutral-800 border border-neutral-200"
               >
                 Pilares Estratégicos
               </a>
               <a
                 href="#municipios"
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-3 rounded-xl hover:bg-neutral-100 text-neutral-800 border border-neutral-200"
+                className="p-2.5 rounded-xl hover:bg-neutral-100 text-neutral-800 border border-neutral-200"
               >
                 21 Municipios del Zulia
               </a>
               <a
                 href="#sumate"
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-3 rounded-xl bg-pjYellow text-black font-extrabold border-2 border-black shadow-[2px_2px_0px_#000000] flex items-center justify-between"
+                className="p-3 rounded-xl bg-pjYellow text-black font-extrabold border-2 border-black shadow-[2px_2px_0px_#000000] flex items-center justify-between mt-1"
               >
                 <span>¡Inscríbete en el Movimiento!</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
             </nav>
-            <div className="pt-2 border-t border-neutral-200 flex gap-2">
-              <button
-                onClick={() => { setMobileMenuOpen(false); navigate('/login'); }}
-                className="flex-1 border-2 border-black py-2.5 rounded-xl text-xs font-black text-black flex items-center justify-center gap-1.5 shadow-[2px_2px_0px_#000000]"
-              >
-                <Lock className="w-3.5 h-3.5" />
-                <span>Acceso SIGO</span>
-              </button>
-              <button
-                onClick={() => { setMobileMenuOpen(false); navigate('/login?bypass=admin'); }}
-                className="flex-1 bg-black text-pjYellow py-2.5 rounded-xl text-xs font-black flex items-center justify-center gap-1.5 shadow-[2px_2px_0px_#ffd200]"
-              >
-                <span>Bypass Admin</span>
-              </button>
+            <div className="pt-2 border-t border-neutral-200 flex justify-center gap-4 text-xs font-bold text-neutral-600">
+              <a href="https://instagram.com/jovenespjzulia" target="_blank" rel="noopener noreferrer" className="hover:text-black flex items-center gap-1">
+                <Instagram className="w-4 h-4 text-pjYellowHover" />
+                <span>Instagram</span>
+              </a>
+              <a href="https://tiktok.com/@jovenespjzulia" target="_blank" rel="noopener noreferrer" className="hover:text-black flex items-center gap-1">
+                <TikTokIcon className="w-4 h-4 text-black" />
+                <span>TikTok</span>
+              </a>
             </div>
           </div>
         )}
@@ -867,8 +985,280 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. PILARES ESTRATÉGICOS (Blanco, Negro y Amarillo) */}
+      {/* 5. SECCIÓN CONÓCENOS: EQUIPO REGIONAL */}
+      <section id="equipo" className="py-16 sm:py-24 bg-white border-b-2 border-black/10 scroll-mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <Reveal direction="up">
+            <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider bg-pjYellow text-black px-3 py-1 rounded-full border border-black shadow-sm inline-flex items-center gap-1.5">
+                <Users className="w-3.5 h-3.5" />
+                <span>Estructura Regional de Conducción</span>
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-black tracking-tight">
+                Conoce a Nuestro <span className="underline decoration-pjYellow decoration-4 underline-offset-8">Equipo Regional</span>
+              </h2>
+              <p className="text-xs sm:text-sm lg:text-base text-neutral-600 font-medium leading-relaxed max-w-2xl mx-auto">
+                Jóvenes líderes, profesionales y activistas que recorren las 109 parroquias del Zulia construyendo esperanza, defensa cívica y soluciones para el futuro.
+              </p>
+            </div>
+          </Reveal>
+
+          {/* Banner Fotográfico del Equipo en Acción (Imagen real del repositorio) */}
+          <Reveal direction="up" delay={80}>
+            <div className="mb-14 relative rounded-3xl border-2 border-black overflow-hidden shadow-[6px_6px_0px_#000000] sm:shadow-[8px_8px_0px_#000000] bg-black group">
+              <div className="h-64 sm:h-96 w-full overflow-hidden relative">
+                <img
+                  src="/images/liderazgo-1.jpeg"
+                  alt="Equipo Juvenil Regional PJ Zulia en el Lago"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5 sm:bottom-8 sm:left-8 sm:right-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4 text-white">
+                  <div>
+                    <span className="bg-pjYellow text-black text-[10px] sm:text-xs font-black uppercase px-2.5 py-1 rounded-md border border-black shadow-sm mb-2 inline-block">
+                      Despliegue Lacustre 2026
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-black text-white">
+                      Dirección Juvenil Regional en la Cuenca del Lago de Maracaibo
+                    </h3>
+                    <p className="text-xs sm:text-sm text-neutral-300 max-w-xl font-medium mt-1">
+                      Unión, compromiso y trabajo de campo junto a pescadores, estudiantes y familias zulianas.
+                    </p>
+                  </div>
+                  <a
+                    href="#sumate"
+                    className="bg-pjYellow hover:bg-pjYellowHover text-black text-xs font-black px-4 py-2.5 rounded-xl border border-black shadow-sm flex items-center justify-center gap-1.5 shrink-0 transition"
+                  >
+                    <span>Sumarme al Equipo</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Grid de Perfiles de Integrantes */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {REGIONAL_TEAM.map((member, idx) => (
+              <Reveal key={member.id} delay={(idx % 3) * 120} direction="up">
+                <div className="bg-white rounded-3xl border-2 border-black p-5 sm:p-6 shadow-[4px_4px_0px_#000000] sm:shadow-[5px_5px_0px_#000000] hover:shadow-[7px_7px_0px_#ffd200] hover:-translate-y-1 transition-all flex flex-col justify-between group h-full">
+                  <div>
+                    {/* Header: Foto / Avatar + Badge */}
+                    <div className="flex items-start gap-3.5 mb-4">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border-2 border-black bg-pjYellow shrink-0 shadow-[2px_2px_0px_#000000]">
+                        <img
+                          src={member.imageUrl}
+                          alt={member.name}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <span className="text-[9px] sm:text-[10px] font-black uppercase px-2 py-0.5 rounded bg-pjYellow text-black border border-black inline-block mb-1">
+                          {member.badge}
+                        </span>
+                        <h4 className="text-base sm:text-lg font-black text-black leading-tight truncate">
+                          {member.name}
+                        </h4>
+                        <p className="text-xs font-bold text-neutral-600 mt-0.5 leading-snug">
+                          {member.role}
+                        </p>
+                        <span className="text-[10px] text-neutral-500 font-medium flex items-center gap-1 mt-1">
+                          <MapPin className="w-3 h-3 text-black" />
+                          <span>{member.municipality}</span>
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Biografía / Enfoque */}
+                    <p className="text-xs text-neutral-700 font-medium leading-relaxed mb-4 line-clamp-3">
+                      {member.bio}
+                    </p>
+                  </div>
+
+                  {/* Redes Sociales del Miembro */}
+                  <div className="pt-3 border-t border-neutral-100 flex items-center justify-between gap-2">
+                    <span className="text-[10px] font-extrabold text-neutral-400 uppercase tracking-wider">
+                      Redes Directas
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <a
+                        href={`https://instagram.com/${member.instagram}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1.5 rounded-lg bg-neutral-100 hover:bg-pjYellow text-black border border-black text-xs transition"
+                        title={`Instagram @${member.instagram}`}
+                      >
+                        <Instagram className="w-3.5 h-3.5" />
+                      </a>
+                      <a
+                        href={`https://tiktok.com/@${member.tiktok}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-1.5 rounded-lg bg-neutral-100 hover:bg-black hover:text-white text-black border border-black text-xs transition"
+                        title={`TikTok @${member.tiktok}`}
+                      >
+                        <TikTokIcon className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 6. SECCIÓN REDES SOCIALES: INSTAGRAM & TIKTOK */}
+      <section id="redes" className="py-16 sm:py-24 bg-neutral-900 text-white border-b-2 border-black scroll-mt-16 relative overflow-hidden">
+        {/* Subtle decorative background glow */}
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-pjYellow/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          <Reveal direction="up">
+            <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider bg-pjYellow text-black px-3 py-1 rounded-full border border-black shadow-sm inline-flex items-center gap-1.5">
+                <Flame className="w-3.5 h-3.5" />
+                <span>Comunidad Digital & Activismo en Redes</span>
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+                Sigue el Movimiento en <span className="text-pjYellow">Instagram & TikTok</span>
+              </h2>
+              <p className="text-xs sm:text-sm lg:text-base text-neutral-300 font-medium leading-relaxed max-w-2xl mx-auto">
+                Transmisiones en vivo, debates estudiantiles, coberturas de jornadas en las 109 parroquias y la voz de la juventud zuliana sin censura.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            {/* Tarjeta Instagram */}
+            <Reveal direction="left" delay={100}>
+              <div className="bg-black border-2 border-neutral-700 hover:border-pjYellow rounded-3xl p-6 sm:p-8 shadow-[6px_6px_0px_#ffd200] transition-all duration-300 flex flex-col justify-between h-full group">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 flex items-center justify-center text-white shadow-md">
+                        <Instagram className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-black uppercase tracking-wider text-pink-400">Canal Oficial</span>
+                        <h3 className="text-xl font-black text-white">Instagram Oficial</h3>
+                      </div>
+                    </div>
+                    <span className="bg-white/10 text-white font-extrabold text-xs px-3 py-1 rounded-full border border-white/20">
+                      @jovenespjzulia
+                    </span>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-neutral-300 font-medium leading-relaxed">
+                    Fotos de nuestras actividades de calle, comunicados urgentes, infografías electorales y transmisiones en vivo desde los 21 municipios del Zulia.
+                  </p>
+
+                  <div className="bg-neutral-800/80 rounded-2xl p-4 border border-neutral-700 flex items-center justify-around text-center">
+                    <div>
+                      <div className="text-lg sm:text-xl font-black text-white">+18.5K</div>
+                      <div className="text-[10px] text-neutral-400 font-bold">Seguidores Zulianos</div>
+                    </div>
+                    <div className="h-8 w-px bg-neutral-700" />
+                    <div>
+                      <div className="text-lg sm:text-xl font-black text-pjYellow">100%</div>
+                      <div className="text-[10px] text-neutral-400 font-bold">Historias Diarias</div>
+                    </div>
+                    <div className="h-8 w-px bg-neutral-700" />
+                    <div>
+                      <div className="text-lg sm:text-xl font-black text-emerald-400">En Vivo</div>
+                      <div className="text-[10px] text-neutral-400 font-bold">Coberturas CNE</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-6 mt-6 border-t border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <span className="text-xs text-neutral-400 font-semibold">
+                    Etiquétanos: <strong className="text-pjYellow">#JovenesPJZulia</strong>
+                  </span>
+                  <a
+                    href="https://instagram.com/jovenespjzulia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto bg-gradient-to-r from-amber-400 via-pink-500 to-purple-600 hover:opacity-90 text-white font-black text-xs px-6 py-3 rounded-xl flex items-center justify-center gap-2 shadow-md transition transform active:scale-95"
+                  >
+                    <span>Seguir en Instagram</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Tarjeta TikTok */}
+            <Reveal direction="right" delay={200}>
+              <div className="bg-black border-2 border-neutral-700 hover:border-cyan-400 rounded-3xl p-6 sm:p-8 shadow-[6px_6px_0px_#00f2fe] transition-all duration-300 flex flex-col justify-between h-full group">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-2xl bg-black border-2 border-cyan-400 flex items-center justify-center text-white shadow-[2px_2px_0px_#fe0979]">
+                        <TikTokIcon className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-black uppercase tracking-wider text-cyan-400">Tendencias & Video</span>
+                        <h3 className="text-xl font-black text-white">TikTok Juvenil</h3>
+                      </div>
+                    </div>
+                    <span className="bg-white/10 text-white font-extrabold text-xs px-3 py-1 rounded-full border border-white/20">
+                      @jovenespjzulia
+                    </span>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-neutral-300 font-medium leading-relaxed">
+                    Videos dinámicos, clips de oratoria parlamentaria, recorridos por canchas comunitarias, datos rápidos de inscripción electoral y el lado humano de nuestro voluntariado.
+                  </p>
+
+                  <div className="bg-neutral-800/80 rounded-2xl p-4 border border-neutral-700 flex items-center justify-around text-center">
+                    <div>
+                      <div className="text-lg sm:text-xl font-black text-white">+32.0K</div>
+                      <div className="text-[10px] text-neutral-400 font-bold">Comunidad TikTok</div>
+                    </div>
+                    <div className="h-8 w-px bg-neutral-700" />
+                    <div>
+                      <div className="text-lg sm:text-xl font-black text-cyan-400">+250K</div>
+                      <div className="text-[10px] text-neutral-400 font-bold">Visualizaciones</div>
+                    </div>
+                    <div className="h-8 w-px bg-neutral-700" />
+                    <div>
+                      <div className="text-lg sm:text-xl font-black text-pink-500">Semanal</div>
+                      <div className="text-[10px] text-neutral-400 font-bold">Nuevos Retos</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-6 mt-6 border-t border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <span className="text-xs text-neutral-400 font-semibold">
+                    Audio oficial: <strong className="text-cyan-400">Primero Justicia Zulia</strong>
+                  </span>
+                  <a
+                    href="https://tiktok.com/@jovenespjzulia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto bg-white hover:bg-neutral-100 text-black font-black text-xs px-6 py-3 rounded-xl flex items-center justify-center gap-2 shadow-md transition transform active:scale-95"
+                  >
+                    <span>Seguir en TikTok</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-black" />
+                  </a>
+                </div>
+              </div>
+            </Reveal>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* 7. PILARES ESTRATÉGICOS (Blanco, Negro y Amarillo) */}
       <section id="pilares" className="py-14 sm:py-20 bg-white border-b-2 border-black/10 scroll-mt-16">
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal direction="up">
             <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16 space-y-2 sm:space-y-3">
@@ -969,40 +1359,52 @@ export const LandingPage: React.FC = () => {
               </div>
             </Reveal>
 
-            {/* Tarjeta Plataforma Tecnológica SIGO */}
+            {/* Tarjeta Fotográfica de Acción Comunitaria (Imagen del repositorio) */}
             <Reveal direction="up" delay={200}>
-              <div className="bg-black text-white border-2 border-black rounded-2xl sm:rounded-3xl p-6 sm:p-10 text-center space-y-5 sm:space-y-6 shadow-[5px_5px_0px_#ffd200] sm:shadow-[8px_8px_0px_#ffd200]">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-pjYellow text-black border-2 border-white rounded-2xl flex items-center justify-center mx-auto shadow-lg">
-                  <Target className="w-8 h-8 sm:w-10 sm:h-10 text-black" />
+              <div className="bg-black text-white border-2 border-black rounded-2xl sm:rounded-3xl overflow-hidden shadow-[5px_5px_0px_#ffd200] sm:shadow-[8px_8px_0px_#ffd200] group">
+                <div className="h-56 sm:h-64 overflow-hidden relative">
+                  <img
+                    src="/images/liderazgo-3.jpeg"
+                    alt="Brazaletes Jóvenes PJ Zulia"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-pjYellow text-black font-black text-[10px] uppercase px-2.5 py-0.5 rounded border border-black shadow-sm">
+                      Solidaridad y Acción
+                    </span>
+                  </div>
                 </div>
 
-                <div className="space-y-1.5 sm:space-y-2">
-                  <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider text-pjYellow">
-                    Tecnología para la Organización
-                  </span>
-                  <h3 className="text-xl sm:text-3xl font-black text-white">
-                    Sistema de Gestión Operativa (SIGO)
-                  </h3>
-                </div>
+                <div className="p-6 sm:p-8 space-y-4">
+                  <div className="space-y-1">
+                    <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider text-pjYellow">
+                      Militancia Activa 2026
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-black text-white">
+                      Unidad y Presencia en Cada Parroquia
+                    </h3>
+                  </div>
 
-                <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed max-w-md mx-auto font-medium">
-                  Padrón militante verificado, auditoría de cargos estatutarios, censo de centros de votación y métricas de crecimiento parroquial en tiempo real.
-                </p>
+                  <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-medium">
+                    Nuestra mayor fortaleza es la cercanía con la gente. Cada brazalete representa un líder juvenil comprometido en recuperar espacios, defender los votos y construir el Zulia de progreso.
+                  </p>
 
-                <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3">
-                  <button
-                    onClick={() => navigate('/login?bypass=admin')}
-                    className="w-full sm:w-auto bg-pjYellow hover:bg-pjYellowHover text-black font-black px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-md active:scale-95"
-                  >
-                    <Lock className="w-4 h-4 text-black" />
-                    <span>Bypass Directivo</span>
-                  </button>
-                  <button
-                    onClick={() => navigate('/login')}
-                    className="w-full sm:w-auto bg-white hover:bg-neutral-100 text-black font-extrabold px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl text-xs transition active:scale-95"
-                  >
-                    Iniciar Sesión Oficial
-                  </button>
+                  <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                    <a
+                      href="#sumate"
+                      className="w-full sm:w-auto bg-pjYellow hover:bg-pjYellowHover text-black font-black px-5 py-3 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-md active:scale-95"
+                    >
+                      <HeartHandshake className="w-4 h-4 text-black" />
+                      <span>Unirme a mi Parroquia</span>
+                    </a>
+                    <a
+                      href="#equipo"
+                      className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-extrabold px-4 py-3 rounded-xl text-xs transition text-center"
+                    >
+                      Conocer al Equipo
+                    </a>
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -1011,7 +1413,7 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. MODAL DE LECTURA DE NOTICIAS COMPLETA */}
+      {/* 8. MODAL DE LECTURA DE NOTICIAS COMPLETA */}
       {activeArticle && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-sm">
           <div className="bg-white border-2 border-black rounded-2xl sm:rounded-3xl max-w-2xl w-full max-h-[92vh] sm:max-h-[90vh] overflow-y-auto p-5 sm:p-8 shadow-[6px_6px_0px_#000000] sm:shadow-[10px_10px_0px_#000000] relative">
@@ -1084,13 +1486,13 @@ export const LandingPage: React.FC = () => {
         </div>
       )}
 
-      {/* 8. BOTÓN FLOTANTE MÓVIL (CTA RÁPIDO AL HACER SCROLL) */}
+      {/* 9. BOTÓN FLOTANTE MÓVIL (CTA RÁPIDO AL HACER SCROLL) */}
       {showFloatingCta && (
         <div className="fixed bottom-3 inset-x-3 z-40 md:hidden flex items-center justify-between gap-3 p-2.5 bg-black/95 backdrop-blur-md border-2 border-pjYellow rounded-2xl shadow-[0_8px_20px_rgba(0,0,0,0.35)] animate-fadeIn">
           <div className="flex items-center gap-2 pl-2">
             <span className="w-2.5 h-2.5 rounded-full bg-pjYellow animate-pulse" />
             <span className="text-[11px] font-black uppercase text-white tracking-wide">
-              Red Juvenil <strong className="text-pjYellow">PJ Zulia</strong>
+              Juventud <strong className="text-pjYellow">PJ Zulia</strong>
             </span>
           </div>
           <a
@@ -1103,7 +1505,7 @@ export const LandingPage: React.FC = () => {
         </div>
       )}
 
-      {/* 9. FOOTER INSTITUCIONAL (Negro Profundo, Acentos Amarillos, Tipografía Nítida) */}
+      {/* 10. FOOTER INSTITUCIONAL (Negro Profundo, Acentos Amarillos, Tipografía Nítida) */}
       <footer className="bg-black text-neutral-400 border-t-2 border-black py-10 sm:py-12 text-xs pb-20 md:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 sm:pb-8 border-b border-neutral-800 text-center md:text-left">
@@ -1118,7 +1520,9 @@ export const LandingPage: React.FC = () => {
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-bold">
-              <a href="#noticias" className="text-white hover:text-pjYellow transition">Noticias & Prensa</a>
+              <a href="#noticias" className="text-white hover:text-pjYellow transition">Noticias</a>
+              <a href="#equipo" className="text-white hover:text-pjYellow transition">Conócenos</a>
+              <a href="#redes" className="text-white hover:text-pjYellow transition">Redes Sociales</a>
               <a href="#pilares" className="text-white hover:text-pjYellow transition">Pilares</a>
               <a href="#municipios" className="text-white hover:text-pjYellow transition">Municipios</a>
               <a href="#sumate" className="text-pjYellow hover:underline transition">Inscripciones</a>
@@ -1126,30 +1530,48 @@ export const LandingPage: React.FC = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-4">
-              <span className="text-neutral-500 font-bold text-[11px]">Acceso Rápido:</span>
-              <button
-                onClick={() => navigate('/login?bypass=admin')}
-                className="text-pjYellow hover:underline font-bold flex items-center gap-1 text-[11px]"
+            {/* Redes Sociales oficiales en el footer */}
+            <div className="flex items-center gap-3">
+              <span className="text-neutral-500 font-bold text-[11px]">Canales Oficiales:</span>
+              <a
+                href="https://instagram.com/jovenespjzulia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-400 hover:text-pjYellow transition flex items-center gap-1 text-[11px]"
               >
-                <Lock className="w-3 h-3" /> Superadmin
-              </button>
-              <button
-                onClick={() => navigate('/login?bypass=municipal')}
-                className="text-white hover:text-pjYellow font-medium transition text-[11px]"
+                <Instagram className="w-3.5 h-3.5" />
+                <span>Instagram</span>
+              </a>
+              <a
+                href="https://tiktok.com/@jovenespjzulia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-400 hover:text-pjYellow transition flex items-center gap-1 text-[11px]"
               >
-                Líder Municipal
-              </button>
-              <button
-                onClick={() => navigate('/login?bypass=parroquial')}
-                className="text-white hover:text-pjYellow font-medium transition text-[11px]"
+                <TikTokIcon className="w-3.5 h-3.5" />
+                <span>TikTok</span>
+              </a>
+              <a
+                href="https://wa.me/584121234567"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-400 hover:text-emerald-400 transition flex items-center gap-1 text-[11px]"
               >
-                Líder Parroquial
-              </button>
+                <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+                <span>WhatsApp</span>
+              </a>
             </div>
 
+            {/* Copyright con acceso interno sigiloso/desapercibido */}
             <div className="text-neutral-500 text-center sm:text-right text-[11px]">
-              © 2026 SIGO-PJ Zulia. Todos los derechos reservados.
+              <span>© 2026 Primero Justicia Zulia. Juventud con Futuro.</span>
+              <button
+                onClick={() => navigate('/login')}
+                className="text-neutral-800 hover:text-neutral-600 transition-colors ml-2 text-[10px] cursor-default"
+                title="Portal"
+              >
+                ·
+              </button>
             </div>
           </div>
         </div>
